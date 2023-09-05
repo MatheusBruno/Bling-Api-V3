@@ -2,15 +2,19 @@
 
 Esse script foi desenvolvido para facilitar e obter o Access Token da API V3 do Bling, assim podendo aliviar agilidade do desenvolvimento do seu software.
 
-1° É preciso criar um arquivo texto com as credenciais Client_id e Client_secret
+1° É preciso criar um arquivo texto com as credenciais Client_id e Client_secret e depois informar o caminho para o paramentHeader
 <pre>
-Arquivo.txt
+dados.txt
 client_id:bd7865c12ba70b496xxxxxxxbdfb72ca1,
 client_secret:28703e2b44bd5408xxxxxxxx43131d5320f58caa606b4a4d459c
 </pre>
+<pre>
+BlingV3().parmentHeader("dados.txt")
+<pre>
+  
 --------------------------------
 
-2° Devemos Informar a função paramentCode o code da url em formatro String
+2° Informar ao paramentro paramentCode o code da url em formato String
 <pre>
 BlingV3().paramentCode("82972ca43131d5320f58xxxxxx")
 </pre>
