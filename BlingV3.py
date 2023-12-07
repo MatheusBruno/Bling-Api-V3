@@ -5,16 +5,18 @@ Created on Mon Set 4 2023.
 
 @author: MatheusBruno
 """
+from dotenv import dotenv_values
+
+import datetime
 import requests
 import base64
 import os
-import datetime
 
 
 class BlingV3():
     """Facilitate and obtain the Bling API V3 Access Token."""
 
-    def parmentHeader(self, path: str):
+    def parmentHeader(self, path: str = None):
         """
         Enter the path of the txt file with the client_id and client_secret.
 
@@ -29,16 +31,24 @@ class BlingV3():
         """
         global header
 
-        credential = None
+        if path:
+            credential = None
 
-        with open(path, 'r') as file:
-            credential = file.read()
-            file.close()
+            with open(path, 'r') as file:
+                credential = file.read()
+                file.close()
 
-        listCredential = credential.split(',')
+            listCredential = credential.split(',')
 
-        listCredential[0] = listCredential[0].replace("client_id:", "")
-        listCredential[1] = listCredential[1].replace("\nclient_secret:", "")
+            listCredential[0] = listCredential[0].replace("client_id:", "")
+            listCredential[1] = listCredential[1].replace(
+                "\nclient_secret:", ""
+            )
+        else:
+            listCredential = [
+                dotenv_values()["BLING_CLIENT_ID"],
+                dotenv_values()["BLING_CLIENT_SECRET"]
+            ]
 
         credentialbs4 = f"{listCredential[0]}:{listCredential[1]}"
         credentialbs4 = credentialbs4.encode('ascii')
