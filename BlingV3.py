@@ -28,6 +28,8 @@ class BlingV3():
         :Usage:
             ::
                 Bling().parmentHeader('/home/user/document/credential.txt')
+                or
+                Bling().parmentHeader() whit .env
         """
         global header
 
